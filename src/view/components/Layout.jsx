@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Body from './Body';
 import Footer from './Footer';
+import '../css/layout.css'
 
 import HangmanCommonService from '../../controller/HangmanCommonService';
 
@@ -25,9 +26,9 @@ export default class Layout extends  React.Component {
                 this._footer.updateMessage("You lose!");
             }
         } else {
-            let remainGuess = this.hangmanCommonService.updateNumberOfReaminLetterToGuess(letterIndexes.length);
+            let remainGuess = this.hangmanCommonService.updateNumberOfRemainLetterToGuess(letterIndexes.length);
             if(remainGuess == 0){ // won the game
-               this._footer.updateMessage("Good JOB");
+               this._footer.updateMessage("You won! refresh the page for new word!");
             }
             this._body.updateListOfLetterAfterGuess(letterIndexes, letter);
         }
@@ -54,7 +55,7 @@ export default class Layout extends  React.Component {
         return(
           <div className="mainScreen">
               <Header/>
-              <Body ref={(child) => { this._body = child; }} reaminLives={this.state.lives} userGuessByLetter={this.userGuessByLetter.bind(this)} wordToPlayWith={this.hangmanCommonService.wordToPlayWith} />
+              <Body ref={(child) => { this._body = child; }} remainLives={this.state.lives} userGuessByLetter={this.userGuessByLetter.bind(this)} wordToPlayWith={this.hangmanCommonService.wordToPlayWith} />
               <Footer ref={(child) => { this._footer = child; }} message={this.props.message}/>
           </div>
     );

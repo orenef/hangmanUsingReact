@@ -1,14 +1,16 @@
+import StickmanConfig from './stickmanConfig';
+
 export default class HangmanCommonService {
 
     constructor() {
-        this._listOfWordsToGuess = ['book'];
+        this._listOfWordsToGuess = StickmanConfig.listOfWords;
         this._wordToPlayWith = null;
         this.chooseRandomWordToGuess();
         this._listOfGuessedLetters = [];
-        this._lives = 9;
+        this._lives = StickmanConfig.lives;
         this._numberOfLetterRemainGuess = this._wordToPlayWith.length;
-
     }
+
     get wordToPlayWith() {
         return this._wordToPlayWith;
     }
@@ -16,27 +18,10 @@ export default class HangmanCommonService {
     get lives(){
         return this._lives;
     }
+
     chooseRandomWordToGuess() {
         this._wordToPlayWith = this._listOfWordsToGuess[Math.floor(Math.random() * this._listOfWordsToGuess.length)];
         return this._wordToPlayWith;
-    }
-
-
-
-    userGuessByLetter(letter) {
-        if (this.isRepeatingGuess(letter)) {
-            return this._lives;
-        }
-        let letterIndexes = this.isLetterExistsInWord(letter);
-        if (letterIndexes.length == 0) { // letter is not exists in word
-            this._lives--;
-        } else {
-            this._numberOfLetterRemainGuess = this._numberOfLetterRemainGuess - letterIndexes.length;
-            this.updateListOfLetterAfterGuess(letterIndexes, letter);
-        }
-
-        this._guessingLetterElmenet.value = '';
-        return this._lives;
     }
 
     isRepeatingGuess(letter) {
@@ -46,21 +31,6 @@ export default class HangmanCommonService {
             this._listOfGuessedLetters.push(letter);
             return false;
         }
-    }
-
-    isLetterExistsInWord(letter) {
-        if (typeof letter === 'undefined') {
-            return [];
-        }
-        let letterIndexes = [];
-        for (let index in this._wordToPlayWith) {
-            if (this._wordToPlayWith.hasOwnProperty(index)) {
-                if (this._wordToPlayWith[index] == letter.toLowerCase()) {
-                    letterIndexes.push(Number(index));
-                }
-            }
-        }
-        return letterIndexes;
     }
 
     decrementLives(){
@@ -74,10 +44,10 @@ export default class HangmanCommonService {
     hasWonTheRound() {
         return this._numberOfLetterRemainGuess == 0;
     }
-    updateNumberOfReaminLetterToGuess(numberOfLetterGuessed){
+
+    updateNumberOfRemainLetterToGuess(numberOfLetterGuessed){
         this._numberOfLetterRemainGuess = this._numberOfLetterRemainGuess - numberOfLetterGuessed;
         return this._numberOfLetterRemainGuess;
     }
-    //this._numberOfLetterRemainGuess = this._numberOfLetterRemainGuess - letterIndexes.length;
 
 }

@@ -1,12 +1,8 @@
 
 var  stickmanConfig = {
     lives : 9,
-    stickmanShowID: 'hangman-show',
-    guessingLetterElmenetID: 'guess',
-    alertElementID: 'alert-zone',
-    guessingWordContinerID: 'playword',
-    submitButtonID: 'submitL',
     alertMessageLose: "You lose!",
-    alertMessageWin: "Good job!"
+    alertMessageWin: "Good job!",
+    listOfWords:['book','dog','cat']
 };
 export default stickmanConfig;

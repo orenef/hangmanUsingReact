@@ -1,5 +1,6 @@
 import React from 'react';
 import Letter from './Letter'
+import '../css/word.css'
 
 export default class Word extends React.Component {
     constructor(props) {

@@ -3,7 +3,8 @@ import React from 'react';
 export default class Guessing extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {value: '',
+        aLive: true};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onSubmit = props.onclick;
@@ -14,8 +15,11 @@ export default class Guessing extends React.Component {
     }
 
     handleSubmit() {
-        this.onSubmit(this.state.value);
+        let livesRemain = this.onSubmit(this.state.value);
         this.setState({value : ''});
+        if(livesRemain == 0){
+        this.setState({aLive : false});
+        }
     }
 
     render() {
@@ -31,7 +35,8 @@ export default class Guessing extends React.Component {
                            className="guessbox"
                            value={this.state.value}
                            onChange={this.handleChange}/>
-                    <button onClick={this.handleSubmit} className="submitbutton">
+                    <button disabled={!this.state.aLive}
+                        onClick={this.handleSubmit} className="submitbutton">
                         Submit
                     </button>
                 </div>

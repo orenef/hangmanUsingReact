@@ -2,7 +2,7 @@
   "name": "hangmanReact",
   "version": "1.0.0",
   "description": "The hangman man game using react",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "test": "play"
   },

@@ -15,7 +15,7 @@ export default class Body extends React.Component {
     render() {
         return (
             <div>
-                <RemainGuessing reaminLives={this.props.reaminLives}/>
+                <RemainGuessing remainLives={this.props.remainLives}/>
                 <Word ref={(child) => {
                     this._child = child;
                 }} wordToPlayWith={this.props.wordToPlayWith}/>

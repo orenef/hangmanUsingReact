@@ -1,6 +1,6 @@
 "# hangmanUsingReact" 
 
-1. run "npm init"
+1. run "npm install"
 
 2. run "npm start"
 

@@ -4,7 +4,7 @@
   "description": "The hangman man game using react",
   "main": "index.jsx",
   "scripts": {
-    "test": "play"
+   "start": "webpack --config webpack.config.js"
   },
   "keywords": [
     "game",
